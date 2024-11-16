@@ -1,7 +1,8 @@
-import { Injectable, Res } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 
 import { db, BooksTable } from '@/database';
 import { BookCreateDTO, BookUpdateDTO } from '@/models';
+import { eq } from 'drizzle-orm';
 
 @Injectable()
 export class BooksService {
@@ -19,8 +20,13 @@ export class BooksService {
     return response;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} book`;
+  async findOne(id: number) {
+    const response = await db
+      .select()
+      .from(BooksTable)
+      .where(eq(BooksTable.id, id));
+
+    return response[0] ?? {};
   }
 
   update(id: number, updateBookDto: BookUpdateDTO) {

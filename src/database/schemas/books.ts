@@ -18,5 +18,8 @@ export const BooksTable = pgTable('books', {
   price: integer().notNull(),
   quantity: integer().notNull(),
   category: varchar().notNull(),
+  publisher: varchar().notNull(),
+  year: integer().notNull(),
+  writtenBy: varchar().notNull(),
   currency: BooksCurrencyEnumTable().notNull(),
 });

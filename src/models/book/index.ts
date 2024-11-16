@@ -9,6 +9,12 @@ export type IBookInsert = InferInsertModel<typeof BooksTable>;
 
 export class Book implements IBookSelect {
   @IsNotEmpty()
+  publisher: string;
+  @IsNotEmpty()
+  year: number;
+  @IsNotEmpty()
+  writtenBy: string;
+  @IsNotEmpty()
   id: number;
   @IsNotEmpty()
   name: string;
@@ -23,6 +29,12 @@ export class Book implements IBookSelect {
 }
 
 export class BookCreateDTO implements IBookInsert {
+  @IsNotEmpty()
+  publisher: string;
+  @IsNotEmpty()
+  year: number;
+  @IsNotEmpty()
+  writtenBy: string;
   @IsNotEmpty()
   name: string;
   @IsNotEmpty()
